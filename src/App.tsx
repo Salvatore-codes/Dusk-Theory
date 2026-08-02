@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnnouncementBar } from './components/AnnouncementBar';
 import { Header } from './components/Header';
 import { HeroCarousel } from './components/HeroCarousel';
@@ -14,14 +14,23 @@ import { PRODUCTS } from './data/products';
 import type { Product } from './data/products';
 
 export function App() {
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [cartItems, setCartItems] = useState<CartItem[]>([
     { product: PRODUCTS[0], size: 'L', quantity: 1 }
   ]);
-  const [wishlistIds, setWishlistIds] = useState<string[]>(['prod-1', 'prod-3']);
+  const [wishlistIds, setWishlistIds] = useState<string[]>(['dusk-1', 'dusk-3']);
   const [selectedCategory, setSelectedCategory] = useState<string>('All Products');
   const [currency, setCurrency] = useState<'INR' | 'USD'>('INR');
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'dark' ? 'light' : 'dark');
+  };
 
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -66,7 +75,7 @@ export function App() {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0b0c10', color: '#FBF8F3' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg-primary)', color: 'var(--text-primary)', transition: 'all 0.4s ease' }}>
       <AnnouncementBar />
 
       <Header
@@ -81,6 +90,8 @@ export function App() {
         }}
         currency={currency}
         onToggleCurrency={() => setCurrency(prev => prev === 'INR' ? 'USD' : 'INR')}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
 
       <main>

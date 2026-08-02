@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, ShoppingBag, Heart, Crown, Sparkles, Menu, X, Moon } from 'lucide-react';
+import { Search, ShoppingBag, Heart, Sparkles, Menu, X, Sun, Moon } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 import type { Product } from '../data/products';
 
@@ -12,6 +12,8 @@ interface HeaderProps {
   onSelectCategory: (category: string) => void;
   currency: 'INR' | 'USD';
   onToggleCurrency: () => void;
+  theme: 'dark' | 'light';
+  onToggleTheme: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -22,7 +24,9 @@ export const Header: React.FC<HeaderProps> = ({
   selectedCategory,
   onSelectCategory,
   currency,
-  onToggleCurrency
+  onToggleCurrency,
+  theme,
+  onToggleTheme
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -49,27 +53,28 @@ export const Header: React.FC<HeaderProps> = ({
       position: 'sticky',
       top: 0,
       zIndex: 90,
-      background: 'rgba(7, 8, 10, 0.94)',
+      background: 'var(--header-bg)',
       backdropFilter: 'blur(20px)',
-      borderBottom: '1px solid rgba(212, 175, 55, 0.25)'
+      borderBottom: '1px solid var(--border-color)',
+      transition: 'background 0.4s ease'
     }}>
       <div style={{
         maxWidth: '1280px',
         margin: '0 auto',
-        padding: '18px 24px',
+        padding: '16px 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '20px'
       }}>
-        {/* Brand Logo & Emblem */}
+        {/* Brand Logo with Official Dusk Theory Theme Logos */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             style={{
               background: 'none',
               border: 'none',
-              color: '#FFD700',
+              color: 'var(--gold-radiant)',
               cursor: 'pointer',
               display: 'none',
               padding: '4px'
@@ -80,19 +85,19 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
 
           <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <div style={{
-              width: '42px',
-              height: '42px',
-              borderRadius: '50%',
-              background: 'linear-gradient(135deg, #FFF099, #FFD700 40%, #C5A059 100%)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#07080a',
-              boxShadow: '0 0 20px rgba(255, 215, 0, 0.45)'
-            }}>
-              <Moon size={22} fill="#07080a" />
-            </div>
+            <img
+              src={theme === 'dark' ? '/logo-light.png' : '/logo-dark.png'}
+              alt="DUSK THEORY Logo"
+              style={{
+                height: '42px',
+                objectFit: 'contain',
+                filter: 'drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3))'
+              }}
+              onError={(e) => {
+                // Fallback to stylized SVG emblem if image load is interrupted
+                (e.currentTarget as HTMLElement).style.display = 'none';
+              }}
+            />
             <div>
               <span className="gold-text" style={{
                 fontSize: '26px',
@@ -105,7 +110,7 @@ export const Header: React.FC<HeaderProps> = ({
               <span style={{
                 display: 'block',
                 fontSize: '9.5px',
-                color: '#C8C1B5',
+                color: 'var(--text-muted)',
                 letterSpacing: '3px',
                 textTransform: 'uppercase',
                 marginTop: '3px',
@@ -122,16 +127,16 @@ export const Header: React.FC<HeaderProps> = ({
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            background: '#121318',
-            border: '1px solid rgba(212, 175, 55, 0.35)',
+            background: 'var(--bg-card)',
+            border: '1px solid var(--border-color)',
             borderRadius: '24px',
             padding: '9px 18px',
             transition: 'all 0.3s ease'
           }}>
-            <Search size={18} color="#D4AF37" style={{ marginRight: '10px' }} />
+            <Search size={18} color="var(--gold-primary)" style={{ marginRight: '10px' }} />
             <input
               type="text"
-              placeholder="Search Dusk Gold tees, hoodies, oversized streetwear..."
+              placeholder="Search Dusk Theory graphic tees, hoodies, oversized..."
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -142,7 +147,7 @@ export const Header: React.FC<HeaderProps> = ({
                 background: 'transparent',
                 border: 'none',
                 outline: 'none',
-                color: '#FAF6EF',
+                color: 'var(--text-primary)',
                 fontSize: '13px',
                 width: '100%'
               }}
@@ -150,7 +155,7 @@ export const Header: React.FC<HeaderProps> = ({
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                style={{ background: 'none', border: 'none', color: '#888277', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }}
               >
                 <X size={16} />
               </button>
@@ -164,15 +169,15 @@ export const Header: React.FC<HeaderProps> = ({
               top: 'calc(100% + 8px)',
               left: 0,
               right: 0,
-              background: '#121318',
-              border: '1px solid #FFD700',
+              background: 'var(--bg-card)',
+              border: '1px solid var(--gold-primary)',
               borderRadius: '14px',
-              boxShadow: '0 12px 40px rgba(0,0,0,0.9)',
+              boxShadow: 'var(--shadow-dark)',
               maxHeight: '380px',
               overflowY: 'auto',
               zIndex: 100
             }}>
-              <div style={{ padding: '12px 16px', fontSize: '11px', color: '#FFD700', borderBottom: '1px solid rgba(212, 175, 55, 0.2)', fontWeight: 800, letterSpacing: '1px' }}>
+              <div style={{ padding: '12px 16px', fontSize: '11px', color: 'var(--gold-primary)', borderBottom: '1px solid var(--border-color)', fontWeight: 800, letterSpacing: '1px' }}>
                 MATCHING GARMENTS ({searchResults.length})
               </div>
               {searchResults.map(prod => (
@@ -189,34 +194,57 @@ export const Header: React.FC<HeaderProps> = ({
                     gap: '14px',
                     padding: '12px 16px',
                     cursor: 'pointer',
-                    borderBottom: '1px solid #1b1c23',
+                    borderBottom: '1px solid var(--border-color)',
                     transition: 'background 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#1b1c23'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = 'var(--bg-card-hover)'}
                   onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                 >
                   <img src={prod.mainImage} alt={prod.name} style={{ width: '46px', height: '46px', borderRadius: '6px', objectFit: 'cover' }} />
                   <div style={{ flex: 1 }}>
-                    <div style={{ color: '#FAF6EF', fontSize: '13px', fontWeight: 700 }}>{prod.name}</div>
-                    <div style={{ color: '#FFD700', fontSize: '12px', fontWeight: 800 }}>
+                    <div style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: 700 }}>{prod.name}</div>
+                    <div style={{ color: 'var(--gold-primary)', fontSize: '12px', fontWeight: 800 }}>
                       {currency === 'INR' ? `₹${prod.price}` : `$${(prod.price / 83).toFixed(2)}`}
                     </div>
                   </div>
-                  <Sparkles size={16} color="#FFD700" />
+                  <Sparkles size={16} color="var(--gold-radiant)" />
                 </div>
               ))}
             </div>
           )}
         </div>
 
-        {/* Right Actions */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
+        {/* Right Actions: Theme Toggle, Currency, Wishlist, Bag */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          {/* Theme Toggle Button */}
+          <button
+            onClick={onToggleTheme}
+            style={{
+              background: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              color: 'var(--gold-radiant)',
+              padding: '8px 12px',
+              borderRadius: '20px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '12px',
+              fontWeight: 700,
+              transition: 'all 0.3s ease'
+            }}
+            title={theme === 'dark' ? 'Switch to Light Theme' : 'Switch to Dark Theme'}
+          >
+            {theme === 'dark' ? <Sun size={16} color="#FFD700" /> : <Moon size={16} color="#B8860B" />}
+            <span style={{ textTransform: 'uppercase' }}>{theme === 'dark' ? 'LIGHT' : 'DARK'}</span>
+          </button>
+
           <button
             onClick={onToggleCurrency}
             style={{
               background: 'rgba(212, 175, 55, 0.12)',
-              border: '1px solid rgba(212, 175, 55, 0.4)',
-              color: '#FFD700',
+              border: '1px solid var(--border-color)',
+              color: 'var(--gold-radiant)',
               padding: '7px 14px',
               borderRadius: '20px',
               fontSize: '12px',
@@ -231,20 +259,20 @@ export const Header: React.FC<HeaderProps> = ({
             style={{
               background: 'none',
               border: 'none',
-              color: '#FAF6EF',
+              color: 'var(--text-primary)',
               position: 'relative',
               cursor: 'pointer',
               padding: '6px'
             }}
             title="Wishlist"
           >
-            <Heart size={22} color="#D4AF37" />
+            <Heart size={22} color="var(--gold-primary)" />
             {wishlistCount > 0 && (
               <span style={{
                 position: 'absolute',
                 top: '0',
                 right: '0',
-                background: '#FFD700',
+                background: 'var(--gold-radiant)',
                 color: '#07080a',
                 fontSize: '10px',
                 fontWeight: 900,
@@ -272,8 +300,8 @@ export const Header: React.FC<HeaderProps> = ({
             <ShoppingBag size={18} />
             <span style={{ fontSize: '12px', letterSpacing: '1px' }}>BAG</span>
             <span style={{
-              background: '#07080a',
-              color: '#FFD700',
+              background: 'var(--text-dark)',
+              color: 'var(--gold-radiant)',
               borderRadius: '12px',
               padding: '2px 8px',
               fontSize: '11px',
@@ -288,8 +316,8 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Category Navigation Bar */}
       <nav style={{
-        background: '#0e0f13',
-        borderTop: '1px solid rgba(212, 175, 55, 0.12)',
+        background: 'var(--bg-secondary)',
+        borderTop: '1px solid var(--border-color)',
         padding: '0 24px'
       }}>
         <div style={{
@@ -310,20 +338,20 @@ export const Header: React.FC<HeaderProps> = ({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: isActive ? '#FFD700' : '#C8C1B5',
+                  color: isActive ? 'var(--gold-radiant)' : 'var(--text-secondary)',
                   fontSize: '13px',
                   fontWeight: isActive ? 800 : 500,
                   padding: '14px 0',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
-                  borderBottom: isActive ? '2px solid #FFD700' : '2px solid transparent',
+                  borderBottom: isActive ? '2px solid var(--gold-radiant)' : '2px solid transparent',
                   transition: 'all 0.2s ease',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '6px'
                 }}
               >
-                {cat === 'Dusk Gold Collection' && <Crown size={14} color="#FFD700" />}
+                {cat === 'Dusk Gold Collection' && <Sparkles size={14} color="var(--gold-radiant)" />}
                 {cat}
               </button>
             );

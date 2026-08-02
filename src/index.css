@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap');
 
 :root {
+  /* DARK THEME (Default) */
   --bg-primary: #07080a;
   --bg-secondary: #0e0f13;
   --bg-tertiary: #16171d;
@@ -20,6 +21,10 @@
   --text-muted: #888277;
   --text-dark: #07080a;
   
+  --header-bg: rgba(7, 8, 10, 0.94);
+  --input-bg: #121318;
+  --border-color: rgba(212, 175, 55, 0.25);
+  
   --accent-red: #E63946;
   --accent-green: #2A9D8F;
   
@@ -36,6 +41,34 @@
   --shadow-dark: 0 12px 35px rgba(0, 0, 0, 0.85);
 }
 
+[data-theme="light"] {
+  /* LIGHT THEME */
+  --bg-primary: #FAF8F5;
+  --bg-secondary: #F2EDE4;
+  --bg-tertiary: #EBE4D8;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FDFBF7;
+  
+  --gold-primary: #B8860B;
+  --gold-radiant: #D4AF37;
+  --gold-champagne: #7A6237;
+  --gold-bronze: #8B6508;
+  --gold-dark: #B8860B;
+  --gold-glow: rgba(184, 134, 11, 0.25);
+  --gold-border: rgba(184, 134, 11, 0.3);
+  
+  --text-primary: #121316;
+  --text-secondary: #4A443B;
+  --text-muted: #787063;
+  --text-dark: #FFFFFF;
+  
+  --header-bg: rgba(250, 248, 245, 0.94);
+  --input-bg: #FFFFFF;
+  --border-color: rgba(184, 134, 11, 0.25);
+  
+  --shadow-dark: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -49,6 +82,7 @@ body {
   font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 /* Custom Luxury Scrollbar */
@@ -93,8 +127,8 @@ body {
 }
 
 .btn-gold-outline {
-  background: rgba(14, 15, 19, 0.8);
-  color: var(--gold-radiant);
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   font-weight: 700;
   border: 1.5px solid var(--gold-primary);
   border-radius: var(--radius-sm);
@@ -115,7 +149,6 @@ body {
   border-color: var(--gold-radiant);
   box-shadow: 0 0 20px var(--gold-glow);
   transform: translateY(-2px);
-  color: #FFFFFF;
 }
 
 /* Gold Shimmer Text */
@@ -125,12 +158,19 @@ body {
 }
 
 .gold-text {
-  background: linear-gradient(90deg, #D4AF37 0%, #FFD700 25%, #FFF5CC 50%, #FFD700 75%, #D4AF37 100%);
+  background: linear-gradient(90deg, #B8860B 0%, #D4AF37 25%, #FFD700 50%, #D4AF37 75%, #B8860B 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: goldShimmer 6s linear infinite;
   display: inline-block;
+}
+
+[data-theme="dark"] .gold-text {
+  background: linear-gradient(90deg, #D4AF37 0%, #FFD700 25%, #FFF5CC 50%, #FFD700 75%, #D4AF37 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .serif-title {
@@ -140,7 +180,7 @@ body {
 
 /* Glassmorphism Panel */
 .glass-panel {
-  background: rgba(14, 15, 19, 0.85);
+  background: var(--bg-secondary);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--gold-border);
