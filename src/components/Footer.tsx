@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Crown, Send, Check, Share2, Globe, MessageCircle } from 'lucide-react';
+import { Crown, Send, Check, Share2, Globe, MessageCircle, MapPin, Navigation, Phone } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -14,8 +14,10 @@ export const Footer: React.FC = () => {
     }
   };
 
+  const mapSearchUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("Kumaran Tower, Roja Nagar, Arivithur Kovil Street, Dindigul - 624004")}`;
+
   return (
-    <footer style={{ background: '#07080a', borderTop: '1px solid #D4AF37', color: '#C2BBB0', padding: '60px 24px 30px 24px' }}>
+    <footer style={{ background: '#050608', borderTop: '1px solid var(--gold-primary)', color: 'var(--text-secondary)', padding: '60px 24px 30px 24px' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <div style={{
           display: 'grid',
@@ -40,7 +42,7 @@ export const Footer: React.FC = () => {
               </div>
               <span className="gold-text" style={{ fontSize: '24px', fontWeight: 900, letterSpacing: '1px' }}>DUSK THEORY</span>
             </div>
-            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#888277', marginBottom: '20px' }}>
+            <p style={{ fontSize: '13px', lineHeight: 1.65, color: 'var(--text-muted)', marginBottom: '20px' }}>
               High-street apparel brand redefining luxury streetwear with 280 GSM organic French Terry cotton and 24K gold foil craft printmaking.
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
@@ -57,9 +59,9 @@ export const Footer: React.FC = () => {
                     width: '36px',
                     height: '36px',
                     borderRadius: '50%',
-                    background: '#141418',
-                    border: '1px solid rgba(212, 175, 55, 0.3)',
-                    color: '#FFD700',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--gold-radiant)',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -73,34 +75,63 @@ export const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Shop Col */}
+          {/* Store Location Col */}
           <div>
-            <h4 style={{ color: '#FFD700', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>SHOP COLLECTIONS</h4>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
-              <li><a href="#catalog" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Luxury Gold Drops</a></li>
-              <li><a href="#catalog" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Oversized Heavyweight Tees</a></li>
-              <li><a href="#catalog" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Fleece Hoodies & Sweatshirts</a></li>
-              <li><a href="#catalog" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Graphic Streetwear Tees</a></li>
-              <li><a href="#catalog" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Leather & Brass Accessories</a></li>
-            </ul>
+            <h4 style={{ color: 'var(--gold-radiant)', fontSize: '15px', fontWeight: 800, marginBottom: '16px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <MapPin size={18} />
+              <span>FLAGSHIP STORE</span>
+            </h4>
+            <div style={{
+              background: 'var(--bg-secondary)',
+              border: '1px solid var(--border-color)',
+              borderRadius: '12px',
+              padding: '16px',
+              fontSize: '13px'
+            }}>
+              <div style={{ color: 'var(--text-primary)', fontWeight: 800, fontSize: '14px', marginBottom: '6px' }}>
+                Kumaran Tower
+              </div>
+              <div style={{ color: 'var(--text-secondary)', lineHeight: 1.5, marginBottom: '12px' }}>
+                Roja Nagar, Arivithur Kovil Street,<br />
+                Dindigul - 624004,<br />
+                Tamil Nadu, India
+              </div>
+              <a
+                href={mapSearchUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  color: 'var(--gold-radiant)',
+                  fontSize: '12px',
+                  fontWeight: 800,
+                  textDecoration: 'none'
+                }}
+              >
+                <Navigation size={14} />
+                <span>GET DIRECTIONS ON MAPS &rarr;</span>
+              </a>
+            </div>
           </div>
 
-          {/* Help Col */}
+          {/* Shop Col */}
           <div>
-            <h4 style={{ color: '#FFD700', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>CUSTOMER CARE</h4>
+            <h4 style={{ color: 'var(--gold-radiant)', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>SHOP COLLECTIONS</h4>
             <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '13px' }}>
-              <li><a href="#" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Track Your Order</a></li>
-              <li><a href="#" style={{ color: '#C2BBB0', textDecoration: 'none' }}>7-Day Returns & Exchanges</a></li>
-              <li><a href="#" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Shipping & Delivery Policy</a></li>
-              <li><a href="#" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Garment Size Guide</a></li>
-              <li><a href="#" style={{ color: '#C2BBB0', textDecoration: 'none' }}>Contact Us / Store Locator</a></li>
+              <li><a href="#catalog" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Dusk Gold Collection</a></li>
+              <li><a href="#catalog" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Oversized Heavyweight Tees</a></li>
+              <li><a href="#catalog" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Fleece Hoodies & Sweatshirts</a></li>
+              <li><a href="#catalog" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Graphic Streetwear Tees</a></li>
+              <li><a href="#catalog" style={{ color: 'var(--text-secondary)', textDecoration: 'none' }}>Leather & Brass Accessories</a></li>
             </ul>
           </div>
 
           {/* Newsletter Col */}
           <div>
-            <h4 style={{ color: '#FFD700', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>GET VIP GOLD DROPS</h4>
-            <p style={{ fontSize: '13px', color: '#8E887D', marginBottom: '14px' }}>
+            <h4 style={{ color: 'var(--gold-radiant)', fontSize: '15px', fontWeight: 700, marginBottom: '16px' }}>GET VIP GOLD DROPS</h4>
+            <p style={{ fontSize: '13px', color: 'var(--text-muted)', marginBottom: '14px' }}>
               Subscribe to unlock early access to limited gold collection drops and 10% off your first order.
             </p>
             <form onSubmit={handleSubscribe} style={{ display: 'flex', gap: '8px' }}>
@@ -112,11 +143,11 @@ export const Footer: React.FC = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 style={{
                   flex: 1,
-                  background: '#141418',
-                  border: '1px solid rgba(212, 175, 55, 0.3)',
+                  background: 'var(--bg-secondary)',
+                  border: '1px solid var(--border-color)',
                   borderRadius: '8px',
                   padding: '10px 14px',
-                  color: '#FBF8F3',
+                  color: 'var(--text-primary)',
                   fontSize: '13px',
                   outline: 'none'
                 }}
@@ -126,9 +157,9 @@ export const Footer: React.FC = () => {
               </button>
             </form>
             {subscribed && (
-              <div style={{ color: '#2A9D8F', fontSize: '12px', fontWeight: 700, marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
+              <div style={{ color: 'var(--accent-green)', fontSize: '12px', fontWeight: 700, marginTop: '8px', display: 'flex', alignItems: 'center', gap: '4px' }}>
                 <Check size={14} />
-                <span>Subscribed! Check your inbox for code GOLD10</span>
+                <span>Subscribed! Check your inbox for code DUSK10</span>
               </div>
             )}
           </div>
@@ -137,19 +168,19 @@ export const Footer: React.FC = () => {
         {/* Bottom copyright & payment methods */}
         <div style={{
           paddingTop: '24px',
-          borderTop: '1px solid rgba(212, 175, 55, 0.15)',
+          borderTop: '1px solid var(--border-color)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
           gap: '16px',
           fontSize: '12px',
-          color: '#8E887D'
+          color: 'var(--text-muted)'
         }}>
           <div>
-            &copy; 2026 DUSK THEORY CLOTHING STORE. All Rights Reserved. Hosted on dusk-theory.vercel.app
+            &copy; 2026 DUSK THEORY CLOTHING STORE. All Rights Reserved. Hosted on dusktheory.vercel.app
           </div>
-          <div style={{ display: 'flex', gap: '16px', fontWeight: 700, color: '#FFD700' }}>
+          <div style={{ display: 'flex', gap: '16px', fontWeight: 700, color: 'var(--gold-radiant)' }}>
             <span>UPI</span>
             <span>VISA</span>
             <span>MASTERCARD</span>
