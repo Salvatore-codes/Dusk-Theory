@@ -166,7 +166,7 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             <CheckCircle2 size={64} color="#FFD700" style={{ marginBottom: '16px' }} />
             <h2 className="gold-text" style={{ fontSize: '28px', fontWeight: 800, marginBottom: '8px' }}>ORDER CONFIRMED!</h2>
             <p style={{ color: '#C2BBB0', fontSize: '14px', marginBottom: '24px' }}>
-              Thank you for shopping with Aura Gold. Your order has been placed successfully and tracking information will be sent via SMS.
+              Thank you for shopping with Dusk Theory. Your order has been placed successfully and tracking information will be sent via SMS.
             </p>
             <div style={{ padding: '12px 20px', background: '#18181d', borderRadius: '8px', border: '1px solid #D4AF37', color: '#FFD700', fontSize: '12px', fontWeight: 700 }}>
               EXPRESS DELIVERY IN 2-4 DAYS

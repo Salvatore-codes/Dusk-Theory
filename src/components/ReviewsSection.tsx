@@ -9,9 +9,9 @@ const REVIEWS = [
     rating: 5,
     date: '2 days ago',
     title: 'Mind-Blowing Quality & Heavy Cotton Fabric!',
-    comment: 'Ordered the Aura Gold Oversized Tee. The 280 GSM cotton feels so rich and heavy, and the metallic gold embossing looks ultra-premium. Shipped super fast in 2 days!',
+    comment: 'Ordered the Dusk Theory Heavyweight Tee. The 280 GSM cotton feels so rich and heavy, and the metallic gold embossing looks ultra-premium. Shipped super fast in 2 days!',
     verified: true,
-    product: 'Aura Gold Oversized Heavyweight Tee'
+    product: 'Dusk Theory Heavyweight 280 GSM Gold Crest Tee'
   },
   {
     id: 2,

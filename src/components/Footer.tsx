@@ -27,21 +27,21 @@ export const Footer: React.FC = () => {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
               <div style={{
-                width: '36px',
-                height: '36px',
+                width: '38px',
+                height: '38px',
                 borderRadius: '50%',
-                background: 'linear-gradient(135deg, #FFD700, #C5A059)',
+                background: 'linear-gradient(135deg, #FFF099, #FFD700 40%, #C5A059 100%)',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                color: '#0b0c10'
+                color: '#07080a'
               }}>
                 <Crown size={20} fontWeight="bold" />
               </div>
-              <span className="gold-text" style={{ fontSize: '22px', fontWeight: 800 }}>AURA GOLD</span>
+              <span className="gold-text" style={{ fontSize: '24px', fontWeight: 900, letterSpacing: '1px' }}>DUSK THEORY</span>
             </div>
-            <p style={{ fontSize: '13px', lineHeight: 1.6, color: '#8E887D', marginBottom: '20px' }}>
-              High-street apparel brand redefining streetwear fashion with 280 GSM luxury organic cotton and metallic gold craft printmaking.
+            <p style={{ fontSize: '13px', lineHeight: 1.65, color: '#888277', marginBottom: '20px' }}>
+              High-street apparel brand redefining luxury streetwear with 280 GSM organic French Terry cotton and 24K gold foil craft printmaking.
             </p>
             <div style={{ display: 'flex', gap: '12px' }}>
               {[
@@ -147,7 +147,7 @@ export const Footer: React.FC = () => {
           color: '#8E887D'
         }}>
           <div>
-            &copy; 2026 AURA GOLD CLOTHING STORE. All Rights Reserved. Hosted on Vercel.
+            &copy; 2026 DUSK THEORY CLOTHING STORE. All Rights Reserved. Hosted on dusk-theory.vercel.app
           </div>
           <div style={{ display: 'flex', gap: '16px', fontWeight: 700, color: '#FFD700' }}>
             <span>UPI</span>

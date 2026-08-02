@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, ShoppingBag, Heart, Crown, Sparkles, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Heart, Crown, Sparkles, Menu, X, Moon } from 'lucide-react';
 import { PRODUCTS } from '../data/products';
 import type { Product } from '../data/products';
 
@@ -49,20 +49,20 @@ export const Header: React.FC<HeaderProps> = ({
       position: 'sticky',
       top: 0,
       zIndex: 90,
-      background: 'rgba(11, 12, 16, 0.92)',
-      backdropFilter: 'blur(16px)',
-      borderBottom: '1px solid rgba(212, 175, 55, 0.2)'
+      background: 'rgba(7, 8, 10, 0.94)',
+      backdropFilter: 'blur(20px)',
+      borderBottom: '1px solid rgba(212, 175, 55, 0.25)'
     }}>
       <div style={{
         maxWidth: '1280px',
         margin: '0 auto',
-        padding: '16px 24px',
+        padding: '18px 24px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
         gap: '20px'
       }}>
-        {/* Left: Mobile Menu Toggle & Brand Logo */}
+        {/* Brand Logo & Emblem */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -79,58 +79,59 @@ export const Header: React.FC<HeaderProps> = ({
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
 
-          <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <a href="#" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div style={{
-              width: '40px',
-              height: '40px',
+              width: '42px',
+              height: '42px',
               borderRadius: '50%',
-              background: 'linear-gradient(135deg, #FFD700, #C5A059)',
+              background: 'linear-gradient(135deg, #FFF099, #FFD700 40%, #C5A059 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              color: '#0b0c10',
-              boxShadow: '0 0 15px rgba(255, 215, 0, 0.4)'
+              color: '#07080a',
+              boxShadow: '0 0 20px rgba(255, 215, 0, 0.45)'
             }}>
-              <Crown size={22} fontWeight="bold" />
+              <Moon size={22} fill="#07080a" />
             </div>
             <div>
               <span className="gold-text" style={{
-                fontSize: '24px',
-                fontWeight: 800,
-                letterSpacing: '1px',
+                fontSize: '26px',
+                fontWeight: 900,
+                letterSpacing: '2px',
                 lineHeight: 1
               }}>
-                AURA GOLD
+                DUSK THEORY
               </span>
               <span style={{
                 display: 'block',
-                fontSize: '10px',
-                color: '#C2BBB0',
-                letterSpacing: '2.5px',
+                fontSize: '9.5px',
+                color: '#C8C1B5',
+                letterSpacing: '3px',
                 textTransform: 'uppercase',
-                marginTop: '2px'
+                marginTop: '3px',
+                fontWeight: 600
               }}>
-                RETAIL CLOTHING STORE
+                HIGH-STREET APPAREL STORE
               </span>
             </div>
           </a>
         </div>
 
-        {/* Center: Live Search Bar */}
-        <div ref={searchRef} style={{ position: 'relative', flex: 1, maxWidth: '420px' }}>
+        {/* Live Search Bar */}
+        <div ref={searchRef} style={{ position: 'relative', flex: 1, maxWidth: '440px' }}>
           <div style={{
             display: 'flex',
             alignItems: 'center',
-            background: '#18181d',
-            border: '1px solid rgba(212, 175, 55, 0.3)',
+            background: '#121318',
+            border: '1px solid rgba(212, 175, 55, 0.35)',
             borderRadius: '24px',
-            padding: '8px 16px',
+            padding: '9px 18px',
             transition: 'all 0.3s ease'
           }}>
             <Search size={18} color="#D4AF37" style={{ marginRight: '10px' }} />
             <input
               type="text"
-              placeholder="Search graphic tees, gold hoodies, oversized..."
+              placeholder="Search Dusk Gold tees, hoodies, oversized streetwear..."
               value={searchQuery}
               onChange={(e) => {
                 setSearchQuery(e.target.value);
@@ -141,15 +142,15 @@ export const Header: React.FC<HeaderProps> = ({
                 background: 'transparent',
                 border: 'none',
                 outline: 'none',
-                color: '#FBF8F3',
-                fontSize: '14px',
+                color: '#FAF6EF',
+                fontSize: '13px',
                 width: '100%'
               }}
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                style={{ background: 'none', border: 'none', color: '#8E887D', cursor: 'pointer' }}
+                style={{ background: 'none', border: 'none', color: '#888277', cursor: 'pointer' }}
               >
                 <X size={16} />
               </button>
@@ -163,16 +164,16 @@ export const Header: React.FC<HeaderProps> = ({
               top: 'calc(100% + 8px)',
               left: 0,
               right: 0,
-              background: '#18181d',
-              border: '1px solid #D4AF37',
-              borderRadius: '12px',
-              boxShadow: '0 10px 30px rgba(0,0,0,0.8)',
+              background: '#121318',
+              border: '1px solid #FFD700',
+              borderRadius: '14px',
+              boxShadow: '0 12px 40px rgba(0,0,0,0.9)',
               maxHeight: '380px',
               overflowY: 'auto',
               zIndex: 100
             }}>
-              <div style={{ padding: '12px 16px', fontSize: '11px', color: '#D4AF37', borderBottom: '1px solid rgba(212, 175, 55, 0.2)', fontWeight: 700 }}>
-                MATCHING PRODUCTS ({searchResults.length})
+              <div style={{ padding: '12px 16px', fontSize: '11px', color: '#FFD700', borderBottom: '1px solid rgba(212, 175, 55, 0.2)', fontWeight: 800, letterSpacing: '1px' }}>
+                MATCHING GARMENTS ({searchResults.length})
               </div>
               {searchResults.map(prod => (
                 <div
@@ -185,19 +186,19 @@ export const Header: React.FC<HeaderProps> = ({
                   style={{
                     display: 'flex',
                     alignItems: 'center',
-                    gap: '12px',
+                    gap: '14px',
                     padding: '12px 16px',
                     cursor: 'pointer',
-                    borderBottom: '1px solid #22222a',
+                    borderBottom: '1px solid #1b1c23',
                     transition: 'background 0.2s ease'
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = '#22222a'}
+                  onMouseEnter={(e) => e.currentTarget.style.background = '#1b1c23'}
                   onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
                 >
-                  <img src={prod.mainImage} alt={prod.name} style={{ width: '44px', height: '44px', borderRadius: '6px', objectFit: 'cover' }} />
+                  <img src={prod.mainImage} alt={prod.name} style={{ width: '46px', height: '46px', borderRadius: '6px', objectFit: 'cover' }} />
                   <div style={{ flex: 1 }}>
-                    <div style={{ color: '#FBF8F3', fontSize: '13px', fontWeight: 600 }}>{prod.name}</div>
-                    <div style={{ color: '#D4AF37', fontSize: '12px', fontWeight: 700 }}>
+                    <div style={{ color: '#FAF6EF', fontSize: '13px', fontWeight: 700 }}>{prod.name}</div>
+                    <div style={{ color: '#FFD700', fontSize: '12px', fontWeight: 800 }}>
                       {currency === 'INR' ? `₹${prod.price}` : `$${(prod.price / 83).toFixed(2)}`}
                     </div>
                   </div>
@@ -208,18 +209,18 @@ export const Header: React.FC<HeaderProps> = ({
           )}
         </div>
 
-        {/* Right: Actions (Currency, Wishlist, Account, Cart) */}
+        {/* Right Actions */}
         <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
           <button
             onClick={onToggleCurrency}
             style={{
-              background: 'rgba(212, 175, 55, 0.1)',
-              border: '1px solid rgba(212, 175, 55, 0.3)',
+              background: 'rgba(212, 175, 55, 0.12)',
+              border: '1px solid rgba(212, 175, 55, 0.4)',
               color: '#FFD700',
-              padding: '6px 12px',
+              padding: '7px 14px',
               borderRadius: '20px',
               fontSize: '12px',
-              fontWeight: 700,
+              fontWeight: 800,
               cursor: 'pointer'
             }}
           >
@@ -230,7 +231,7 @@ export const Header: React.FC<HeaderProps> = ({
             style={{
               background: 'none',
               border: 'none',
-              color: '#FBF8F3',
+              color: '#FAF6EF',
               position: 'relative',
               cursor: 'pointer',
               padding: '6px'
@@ -244,9 +245,9 @@ export const Header: React.FC<HeaderProps> = ({
                 top: '0',
                 right: '0',
                 background: '#FFD700',
-                color: '#0b0c10',
+                color: '#07080a',
                 fontSize: '10px',
-                fontWeight: 800,
+                fontWeight: 900,
                 width: '16px',
                 height: '16px',
                 borderRadius: '50%',
@@ -263,20 +264,20 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={onOpenCart}
             className="btn-gold"
             style={{
-              padding: '10px 18px',
+              padding: '10px 20px',
               borderRadius: '24px',
               position: 'relative'
             }}
           >
             <ShoppingBag size={18} />
-            <span style={{ fontSize: '13px' }}>BAG</span>
+            <span style={{ fontSize: '12px', letterSpacing: '1px' }}>BAG</span>
             <span style={{
-              background: '#0b0c10',
+              background: '#07080a',
               color: '#FFD700',
               borderRadius: '12px',
               padding: '2px 8px',
               fontSize: '11px',
-              fontWeight: 800,
+              fontWeight: 900,
               marginLeft: '4px'
             }}>
               {cartCount}
@@ -287,8 +288,8 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Category Navigation Bar */}
       <nav style={{
-        background: '#141418',
-        borderTop: '1px solid rgba(212, 175, 55, 0.1)',
+        background: '#0e0f13',
+        borderTop: '1px solid rgba(212, 175, 55, 0.12)',
         padding: '0 24px'
       }}>
         <div style={{
@@ -300,7 +301,7 @@ export const Header: React.FC<HeaderProps> = ({
           overflowX: 'auto',
           scrollbarWidth: 'none'
         }}>
-          {['All Products', 'Luxury Gold Collection', 'Oversized Tees', 'Hoodies & Sweatshirts', 'Graphic Tees', 'Accessories'].map(cat => {
+          {['All Products', 'Dusk Gold Collection', 'Oversized Tees', 'Hoodies & Sweatshirts', 'Graphic Tees', 'Accessories'].map(cat => {
             const isActive = selectedCategory === cat;
             return (
               <button
@@ -309,9 +310,9 @@ export const Header: React.FC<HeaderProps> = ({
                 style={{
                   background: 'none',
                   border: 'none',
-                  color: isActive ? '#FFD700' : '#C2BBB0',
+                  color: isActive ? '#FFD700' : '#C8C1B5',
                   fontSize: '13px',
-                  fontWeight: isActive ? 700 : 500,
+                  fontWeight: isActive ? 800 : 500,
                   padding: '14px 0',
                   cursor: 'pointer',
                   whiteSpace: 'nowrap',
@@ -322,7 +323,7 @@ export const Header: React.FC<HeaderProps> = ({
                   gap: '6px'
                 }}
               >
-                {cat === 'Luxury Gold Collection' && <Crown size={14} color="#FFD700" />}
+                {cat === 'Dusk Gold Collection' && <Crown size={14} color="#FFD700" />}
                 {cat}
               </button>
             );
@@ -330,7 +331,6 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
       </nav>
 
-      {/* Mobile responsive CSS inline tag */}
       <style>{`
         @media (max-width: 768px) {
           .mobile-menu-btn { display: block !important; }
