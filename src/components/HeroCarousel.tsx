@@ -40,89 +40,94 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
   }, []);
 
   return (
-    <section style={{ position: 'relative', overflow: 'hidden', background: '#07080a' }}>
+    <section style={{ position: 'relative', overflow: 'hidden', background: 'var(--bg-primary)' }}>
       <div style={{
         position: 'relative',
         minHeight: '540px',
         display: 'flex',
         alignItems: 'center'
       }}>
-        {SLIDES.map((slide, idx) => (
-          <div
-            key={idx}
-            style={{
-              position: 'absolute',
-              inset: 0,
-              opacity: idx === currentSlide ? 1 : 0,
-              transition: 'opacity 1s cubic-bezier(0.4, 0, 0.2, 1)',
-              backgroundImage: `linear-gradient(90deg, rgba(7,8,10,0.96) 0%, rgba(7,8,10,0.7) 50%, rgba(7,8,10,0.88) 100%), url(${slide.image})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              display: 'flex',
-              alignItems: 'center'
-            }}
-          >
-            <div style={{
-              maxWidth: '1280px',
-              margin: '0 auto',
-              padding: '0 24px',
-              width: '100%',
-              zIndex: 2
-            }}>
-              <div style={{ maxWidth: '680px' }}>
-                <div style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  background: 'rgba(212, 175, 55, 0.15)',
-                  border: '1px solid #FFD700',
-                  color: '#FFD700',
-                  padding: '6px 16px',
-                  borderRadius: '20px',
-                  fontSize: '11px',
-                  fontWeight: 800,
-                  letterSpacing: '1.5px',
-                  marginBottom: '20px'
-                }}>
-                  <Moon size={14} fill="#FFD700" />
-                  <span>{slide.badge}</span>
-                </div>
+        {SLIDES.map((slide, idx) => {
+          const isActive = idx === currentSlide;
+          return (
+            <div
+              key={idx}
+              style={{
+                position: 'absolute',
+                inset: 0,
+                opacity: isActive ? 1 : 0,
+                visibility: isActive ? 'visible' : 'hidden',
+                pointerEvents: isActive ? 'auto' : 'none',
+                transition: 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease',
+                backgroundImage: `linear-gradient(90deg, var(--bg-primary) 0%, rgba(7,8,10,0.7) 50%, var(--bg-primary) 100%), url(${slide.image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                display: 'flex',
+                alignItems: 'center'
+              }}
+            >
+              <div style={{
+                maxWidth: '1280px',
+                margin: '0 auto',
+                padding: '0 24px',
+                width: '100%',
+                zIndex: 2
+              }}>
+                <div style={{ maxWidth: '680px' }}>
+                  <div style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'rgba(212, 175, 55, 0.15)',
+                    border: '1px solid var(--gold-radiant)',
+                    color: 'var(--gold-radiant)',
+                    padding: '6px 16px',
+                    borderRadius: '20px',
+                    fontSize: '11px',
+                    fontWeight: 800,
+                    letterSpacing: '1.5px',
+                    marginBottom: '20px'
+                  }}>
+                    <Moon size={14} fill="var(--gold-radiant)" />
+                    <span>{slide.badge}</span>
+                  </div>
 
-                <h1 style={{
-                  fontSize: 'calc(30px + 2vw)',
-                  fontWeight: 900,
-                  lineHeight: 1.1,
-                  marginBottom: '18px',
-                  letterSpacing: '-0.5px'
-                }}>
-                  <span className="gold-text">{slide.title}</span>
-                </h1>
+                  <h1 style={{
+                    fontSize: 'calc(30px + 2vw)',
+                    fontWeight: 900,
+                    lineHeight: 1.1,
+                    marginBottom: '18px',
+                    letterSpacing: '-0.5px'
+                  }}>
+                    <span className="gold-text">{slide.title}</span>
+                  </h1>
 
-                <p style={{
-                  color: '#C8C1B5',
-                  fontSize: '16px',
-                  lineHeight: 1.65,
-                  marginBottom: '34px',
-                  fontWeight: 400
-                }}>
-                  {slide.subtitle}
-                </p>
+                  <p style={{
+                    color: 'var(--text-secondary)',
+                    fontSize: '16px',
+                    lineHeight: 1.65,
+                    marginBottom: '34px',
+                    fontWeight: 400
+                  }}>
+                    {slide.subtitle}
+                  </p>
 
-                <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                  <button onClick={onExploreClick} className="btn-gold" style={{ padding: '15px 36px', fontSize: '13px' }}>
-                    <span>{slide.ctaText}</span>
-                    <ArrowRight size={18} />
-                  </button>
+                  <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                    <button onClick={onExploreClick} className="btn-gold" style={{ padding: '15px 36px', fontSize: '13px' }}>
+                      <span>{slide.ctaText}</span>
+                      <ArrowRight size={18} />
+                    </button>
 
-                  <button onClick={onExploreClick} className="btn-gold-outline" style={{ padding: '15px 30px', fontSize: '13px' }}>
-                    <Sparkles size={16} />
-                    <span>VIEW ALL DROPS</span>
-                  </button>
+                    <button onClick={onExploreClick} className="btn-gold-outline" style={{ padding: '15px 30px', fontSize: '13px' }}>
+                      <Sparkles size={16} />
+                      <span>VIEW ALL DROPS</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
 
         {/* Carousel Indicators */}
         <div style={{
@@ -142,7 +147,7 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
                 width: idx === currentSlide ? '36px' : '10px',
                 height: '10px',
                 borderRadius: '5px',
-                background: idx === currentSlide ? '#FFD700' : 'rgba(255,255,255,0.25)',
+                background: idx === currentSlide ? 'var(--gold-radiant)' : 'rgba(128,128,128,0.3)',
                 border: 'none',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease'
@@ -154,9 +159,9 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
 
       {/* Gold Trust Bar */}
       <div style={{
-        background: '#0e0f13',
-        borderTop: '1px solid rgba(212, 175, 55, 0.25)',
-        borderBottom: '1px solid rgba(212, 175, 55, 0.25)',
+        background: 'var(--bg-secondary)',
+        borderTop: '1px solid var(--border-color)',
+        borderBottom: '1px solid var(--border-color)',
         padding: '18px 24px'
       }}>
         <div style={{
@@ -167,26 +172,26 @@ export const HeroCarousel: React.FC<HeroCarouselProps> = ({ onExploreClick }) =>
           gap: '20px'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Award size={24} color="#FFD700" />
+            <Award size={24} color="var(--gold-radiant)" />
             <div>
-              <div style={{ color: '#FAF6EF', fontSize: '13px', fontWeight: 800 }}>280 GSM LUXURY COTTON</div>
-              <div style={{ color: '#888277', fontSize: '11px' }}>Bio-Washed & Pre-Shrunk</div>
+              <div style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: 800 }}>280 GSM LUXURY COTTON</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '11px' }}>Bio-Washed & Pre-Shrunk</div>
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <Truck size={24} color="#FFD700" />
+            <Truck size={24} color="var(--gold-radiant)" />
             <div>
-              <div style={{ color: '#FAF6EF', fontSize: '13px', fontWeight: 800 }}>EXPRESS ALL-INDIA SHIPPING</div>
-              <div style={{ color: '#888277', fontSize: '11px' }}>Delivered in 2-4 Business Days</div>
+              <div style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: 800 }}>EXPRESS ALL-INDIA SHIPPING</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '11px' }}>Delivered in 2-4 Business Days</div>
             </div>
           </div>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <ShieldCheck size={24} color="#FFD700" />
+            <ShieldCheck size={24} color="var(--gold-radiant)" />
             <div>
-              <div style={{ color: '#FAF6EF', fontSize: '13px', fontWeight: 800 }}>100% CASH ON DELIVERY</div>
-              <div style={{ color: '#888277', fontSize: '11px' }}>Pay on Hand at Doorstep</div>
+              <div style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: 800 }}>100% CASH ON DELIVERY</div>
+              <div style={{ color: 'var(--text-muted)', fontSize: '11px' }}>Pay on Hand at Doorstep</div>
             </div>
           </div>
         </div>
