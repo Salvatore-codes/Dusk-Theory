@@ -89,9 +89,14 @@ export const Header: React.FC<HeaderProps> = ({
               src={theme === 'dark' ? '/logo-light.png' : '/logo-dark.png'}
               alt="DUSK THEORY Logo"
               style={{
-                height: '42px',
+                height: '46px',
+                width: 'auto',
+                maxWidth: '120px',
                 objectFit: 'contain',
-                filter: 'drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3))'
+                filter: theme === 'dark' 
+                  ? 'drop-shadow(0 0 10px rgba(255, 215, 0, 0.4))' 
+                  : 'drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15))',
+                transition: 'all 0.3s ease'
               }}
               onError={(e) => {
                 // Fallback to stylized SVG emblem if image load is interrupted
@@ -100,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({
             />
             <div>
               <span className="gold-text" style={{
-                fontSize: '26px',
+                fontSize: '24px',
                 fontWeight: 900,
                 letterSpacing: '2px',
                 lineHeight: 1
@@ -109,7 +114,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
               <span style={{
                 display: 'block',
-                fontSize: '9.5px',
+                fontSize: '9px',
                 color: 'var(--text-muted)',
                 letterSpacing: '3px',
                 textTransform: 'uppercase',
