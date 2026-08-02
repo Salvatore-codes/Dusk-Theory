@@ -41,7 +41,7 @@ const CATEGORY_TILES = [
 
 export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) => {
   return (
-    <section style={{ padding: '60px 24px', background: '#0b0c10' }}>
+    <section style={{ padding: '60px 24px', background: 'var(--bg-primary)', transition: 'background 0.4s ease' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Section Header */}
         <div style={{
@@ -53,11 +53,11 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
           gap: '16px'
         }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#FFD700', fontSize: '12px', fontWeight: 700, letterSpacing: '1px' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--gold-radiant)', fontSize: '12px', fontWeight: 800, letterSpacing: '1px' }}>
               <Crown size={14} />
               <span>CURATED COLLECTIONS</span>
             </div>
-            <h2 style={{ fontSize: '32px', fontWeight: 800, marginTop: '4px' }}>
+            <h2 style={{ fontSize: '32px', fontWeight: 900, marginTop: '4px', color: 'var(--text-primary)' }}>
               EXPLORE BY <span className="gold-text">CATEGORY</span>
             </h2>
           </div>
@@ -79,21 +79,21 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                 borderRadius: '16px',
                 overflow: 'hidden',
                 cursor: 'pointer',
-                border: '1px solid rgba(212, 175, 55, 0.25)',
+                border: '1px solid var(--border-color)',
                 transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.5)'
+                boxShadow: 'var(--shadow-dark)'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.borderColor = '#FFD700';
-                e.currentTarget.style.boxShadow = '0 15px 35px rgba(212, 175, 55, 0.25)';
+                e.currentTarget.style.borderColor = 'var(--gold-radiant)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-gold-lg)';
                 const img = e.currentTarget.querySelector('img');
                 if (img) img.style.transform = 'scale(1.08)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.borderColor = 'rgba(212, 175, 55, 0.25)';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)';
+                e.currentTarget.style.borderColor = 'var(--border-color)';
+                e.currentTarget.style.boxShadow = 'var(--shadow-dark)';
                 const img = e.currentTarget.querySelector('img');
                 if (img) img.style.transform = 'scale(1)';
               }}
@@ -114,7 +114,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
               <div style={{
                 position: 'absolute',
                 inset: 0,
-                background: 'linear-gradient(180deg, rgba(11,12,16,0.2) 0%, rgba(11,12,16,0.85) 100%)',
+                background: 'linear-gradient(180deg, rgba(7,8,10,0.1) 0%, rgba(7,8,10,0.85) 100%)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
@@ -123,9 +123,9 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                 {/* Top Tag */}
                 <div>
                   <span style={{
-                    background: 'rgba(11, 12, 16, 0.75)',
+                    background: 'rgba(7, 8, 10, 0.82)',
                     backdropFilter: 'blur(8px)',
-                    border: '1px solid #D4AF37',
+                    border: '1px solid var(--gold-primary)',
                     color: '#FFD700',
                     fontSize: '11px',
                     fontWeight: 800,
@@ -140,10 +140,10 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                 {/* Bottom Content */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end' }}>
                   <div>
-                    <h3 style={{ color: '#FBF8F3', fontSize: '20px', fontWeight: 800, marginBottom: '4px' }}>
+                    <h3 style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 800, marginBottom: '4px' }}>
                       {cat.name}
                     </h3>
-                    <p style={{ color: '#D4AF37', fontSize: '13px', fontWeight: 600 }}>
+                    <p style={{ color: '#FFD700', fontSize: '13px', fontWeight: 700 }}>
                       {cat.count}
                     </p>
                   </div>
@@ -153,7 +153,7 @@ export const CategoryGrid: React.FC<CategoryGridProps> = ({ onSelectCategory }) 
                     height: '36px',
                     borderRadius: '50%',
                     background: 'linear-gradient(135deg, #FFD700, #C5A059)',
-                    color: '#0b0c10',
+                    color: '#07080a',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',

@@ -20,9 +20,9 @@ const REVIEWS = [
     rating: 5,
     date: '1 week ago',
     title: 'The Best Hoodie I Own in 2026',
-    comment: 'The Monarch Gold Fleece Hoodie is incredible. Thick fleece lining, gold metal drawstrings, and perfect boxy streetwear fit. Worth every rupee.',
+    comment: 'The Dusk Empire Fleece Hoodie is incredible. Thick fleece lining, gold metal drawstrings, and perfect boxy streetwear fit. Worth every rupee.',
     verified: true,
-    product: 'Monarch Gold Edition Fleece Hoodie'
+    product: 'Dusk Theory Empire 380 GSM Gold Aglet Hoodie'
   },
   {
     id: 3,
@@ -33,29 +33,29 @@ const REVIEWS = [
     title: 'Stunning Cyberpunk Design',
     comment: 'The Golden Phoenix print is sharp and vibrant even after 4 washes. Cash on Delivery was seamless. Will definitely order again!',
     verified: true,
-    product: 'Golden Phoenix Cyberpunk Graphic Tee'
+    product: 'Dusk Theory Phoenix Cyberpunk Oversized Tee'
   }
 ];
 
 export const ReviewsSection: React.FC = () => {
   return (
-    <section style={{ padding: '70px 24px', background: '#141418', borderTop: '1px solid rgba(212, 175, 55, 0.2)' }}>
+    <section style={{ padding: '70px 24px', background: 'var(--bg-secondary)', borderTop: '1px solid var(--border-color)', transition: 'background 0.4s ease' }}>
       <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: '#FFD700', fontSize: '12px', fontWeight: 700, letterSpacing: '1px', marginBottom: '8px' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', color: 'var(--gold-radiant)', fontSize: '12px', fontWeight: 800, letterSpacing: '1px', marginBottom: '8px' }}>
             <Crown size={14} />
             <span>VERIFIED BUYER REVIEWS & REPUTATION</span>
           </div>
-          <h2 style={{ fontSize: '32px', fontWeight: 800 }}>
+          <h2 style={{ fontSize: '32px', fontWeight: 900, color: 'var(--text-primary)' }}>
             WHAT OUR <span className="gold-text">COMMUNITY SAYS</span>
           </h2>
         </div>
 
         {/* Rating Overview Card */}
         <div style={{
-          background: '#18181d',
-          border: '1px solid #D4AF37',
+          background: 'var(--bg-card)',
+          border: '1px solid var(--gold-primary)',
           borderRadius: '16px',
           padding: '28px',
           marginBottom: '40px',
@@ -63,17 +63,17 @@ export const ReviewsSection: React.FC = () => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           gap: '24px',
           alignItems: 'center',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.6)'
+          boxShadow: 'var(--shadow-dark)'
         }}>
           {/* Average Rating */}
-          <div style={{ textAlign: 'center', borderRight: '1px solid rgba(212, 175, 55, 0.2)', paddingRight: '20px' }}>
-            <div style={{ fontSize: '48px', fontWeight: 800, color: '#FFD700', lineHeight: 1 }}>4.9</div>
-            <div style={{ display: 'flex', justifyContent: 'center', color: '#FFD700', margin: '8px 0' }}>
+          <div style={{ textAlign: 'center', borderRight: '1px solid var(--border-color)', paddingRight: '20px' }}>
+            <div style={{ fontSize: '48px', fontWeight: 900, color: 'var(--gold-radiant)', lineHeight: 1 }}>4.9</div>
+            <div style={{ display: 'flex', justifyContent: 'center', color: 'var(--gold-radiant)', margin: '8px 0' }}>
               {[...Array(5)].map((_, i) => (
-                <Star key={i} size={18} fill="#FFD700" />
+                <Star key={i} size={18} fill="var(--gold-radiant)" />
               ))}
             </div>
-            <div style={{ color: '#C2BBB0', fontSize: '13px', fontWeight: 600 }}>Based on 10,480+ Reviews</div>
+            <div style={{ color: 'var(--text-secondary)', fontSize: '13px', fontWeight: 700 }}>Based on 10,480+ Reviews</div>
           </div>
 
           {/* Rating Breakdown Bars */}
@@ -86,20 +86,20 @@ export const ReviewsSection: React.FC = () => {
               { stars: 1, pct: 0 }
             ].map(row => (
               <div key={row.stars} style={{ display: 'flex', alignItems: 'center', gap: '10px', fontSize: '12px' }}>
-                <span style={{ color: '#FBF8F3', width: '45px', fontWeight: 600 }}>{row.stars} Stars</span>
-                <div style={{ flex: 1, height: '6px', background: '#141418', borderRadius: '3px', overflow: 'hidden' }}>
-                  <div style={{ width: `${row.pct}%`, height: '100%', background: '#FFD700' }} />
+                <span style={{ color: 'var(--text-primary)', width: '45px', fontWeight: 700 }}>{row.stars} Stars</span>
+                <div style={{ flex: 1, height: '6px', background: 'var(--bg-secondary)', borderRadius: '3px', overflow: 'hidden' }}>
+                  <div style={{ width: `${row.pct}%`, height: '100%', background: 'var(--gold-radiant)' }} />
                 </div>
-                <span style={{ color: '#8E887D', width: '35px', textAlign: 'right' }}>{row.pct}%</span>
+                <span style={{ color: 'var(--text-muted)', width: '35px', textAlign: 'right' }}>{row.pct}%</span>
               </div>
             ))}
           </div>
 
           {/* Guarantee Badge */}
-          <div style={{ textAlign: 'center', background: 'rgba(212, 175, 55, 0.08)', padding: '20px', borderRadius: '12px', border: '1px dashed #D4AF37' }}>
-            <CheckCircle size={32} color="#FFD700" style={{ marginBottom: '8px' }} />
-            <div style={{ color: '#FBF8F3', fontSize: '14px', fontWeight: 800 }}>100% VERIFIED REVIEWS</div>
-            <div style={{ color: '#8E887D', fontSize: '11px', marginTop: '4px' }}>All reviews are submitted by authenticated buyers post-delivery.</div>
+          <div style={{ textAlign: 'center', background: 'rgba(212, 175, 55, 0.1)', padding: '20px', borderRadius: '12px', border: '1px dashed var(--gold-primary)' }}>
+            <CheckCircle size={32} color="var(--gold-radiant)" style={{ marginBottom: '8px' }} />
+            <div style={{ color: 'var(--text-primary)', fontSize: '14px', fontWeight: 900 }}>100% VERIFIED REVIEWS</div>
+            <div style={{ color: 'var(--text-muted)', fontSize: '11px', marginTop: '4px' }}>All reviews are submitted by authenticated buyers post-delivery.</div>
           </div>
         </div>
 
@@ -109,8 +109,8 @@ export const ReviewsSection: React.FC = () => {
             <div
               key={rev.id}
               style={{
-                background: '#18181d',
-                border: '1px solid rgba(212, 175, 55, 0.2)',
+                background: 'var(--bg-card)',
+                border: '1px solid var(--border-color)',
                 borderRadius: '16px',
                 padding: '24px',
                 display: 'flex',
@@ -120,29 +120,29 @@ export const ReviewsSection: React.FC = () => {
             >
               <div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '12px' }}>
-                  <div style={{ display: 'flex', color: '#FFD700' }}>
+                  <div style={{ display: 'flex', color: 'var(--gold-radiant)' }}>
                     {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} size={16} fill="#FFD700" />
+                      <Star key={i} size={16} fill="var(--gold-radiant)" />
                     ))}
                   </div>
-                  <span style={{ color: '#8E887D', fontSize: '11px' }}>{rev.date}</span>
+                  <span style={{ color: 'var(--text-muted)', fontSize: '11px' }}>{rev.date}</span>
                 </div>
 
-                <h4 style={{ color: '#FBF8F3', fontSize: '15px', fontWeight: 700, marginBottom: '8px' }}>{rev.title}</h4>
-                <p style={{ color: '#C2BBB0', fontSize: '13px', lineHeight: 1.6, marginBottom: '16px' }}>"{rev.comment}"</p>
+                <h4 style={{ color: 'var(--text-primary)', fontSize: '15px', fontWeight: 800, marginBottom: '8px' }}>{rev.title}</h4>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '13px', lineHeight: 1.6, marginBottom: '16px' }}>"{rev.comment}"</p>
               </div>
 
-              <div style={{ paddingTop: '12px', borderTop: '1px solid rgba(212, 175, 55, 0.15)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <div style={{ paddingTop: '12px', borderTop: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
-                  <div style={{ color: '#FBF8F3', fontSize: '13px', fontWeight: 700 }}>{rev.name}</div>
-                  <div style={{ color: '#2A9D8F', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 600 }}>
+                  <div style={{ color: 'var(--text-primary)', fontSize: '13px', fontWeight: 800 }}>{rev.name}</div>
+                  <div style={{ color: 'var(--accent-green)', fontSize: '11px', display: 'flex', alignItems: 'center', gap: '4px', fontWeight: 700 }}>
                     <CheckCircle size={12} />
                     <span>Verified Buyer ({rev.location})</span>
                   </div>
                 </div>
 
-                <button style={{ background: 'none', border: 'none', color: '#8E887D', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px' }}>
-                  <ThumbsUp size={14} color="#FFD700" />
+                <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '4px', fontSize: '11px' }}>
+                  <ThumbsUp size={14} color="var(--gold-radiant)" />
                   <span>Helpful</span>
                 </button>
               </div>

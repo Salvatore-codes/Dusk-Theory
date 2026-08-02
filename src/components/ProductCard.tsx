@@ -40,25 +40,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
-        background: '#18181d',
+        background: 'var(--bg-card)',
         borderRadius: '16px',
-        border: '1px solid rgba(212, 175, 55, 0.2)',
+        border: '1px solid var(--border-color)',
         overflow: 'hidden',
         cursor: 'pointer',
         transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
         position: 'relative',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: isHovered ? '0 12px 30px rgba(212, 175, 55, 0.2)' : '0 6px 20px rgba(0, 0, 0, 0.4)',
+        boxShadow: isHovered ? 'var(--shadow-gold)' : 'var(--shadow-dark)',
         transform: isHovered ? 'translateY(-6px)' : 'none'
       }}
     >
-      {/* Image Container with Dual Image Swap */}
+      {/* Image Container */}
       <div style={{
         position: 'relative',
-        paddingTop: '125%', // 4:5 aspect ratio
+        paddingTop: '125%',
         overflow: 'hidden',
-        background: '#141418'
+        background: 'var(--bg-secondary)'
       }}>
         <img
           src={isHovered ? product.hoverImage : product.mainImage}
@@ -80,15 +80,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             position: 'absolute',
             top: '12px',
             left: '12px',
-            background: product.badge === 'LIMITED GOLD'
+            background: product.badge === 'LIMITED GOLD' || product.badge === 'DUSK EXCLUSIVE'
               ? 'linear-gradient(135deg, #FFD700, #C5A059)'
-              : 'rgba(11, 12, 16, 0.85)',
+              : 'rgba(7, 8, 10, 0.85)',
             border: '1px solid #FFD700',
-            color: product.badge === 'LIMITED GOLD' ? '#0b0c10' : '#FFD700',
+            color: product.badge === 'LIMITED GOLD' || product.badge === 'DUSK EXCLUSIVE' ? '#07080a' : '#FFD700',
             padding: '4px 10px',
             borderRadius: '6px',
             fontSize: '10px',
-            fontWeight: 800,
+            fontWeight: 900,
             letterSpacing: '0.5px',
             display: 'flex',
             alignItems: 'center',
@@ -96,7 +96,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             zIndex: 2,
             boxShadow: '0 4px 12px rgba(0,0,0,0.5)'
           }}>
-            {product.badge === 'LIMITED GOLD' && <Crown size={12} />}
+            {(product.badge === 'LIMITED GOLD' || product.badge === 'DUSK EXCLUSIVE') && <Crown size={12} />}
             <span>{product.badge}</span>
           </div>
         )}
@@ -107,12 +107,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             position: 'absolute',
             top: '12px',
             right: '12px',
-            background: '#E63946',
+            background: 'var(--accent-red)',
             color: '#FFFFFF',
             padding: '4px 8px',
             borderRadius: '6px',
             fontSize: '10px',
-            fontWeight: 800,
+            fontWeight: 900,
             zIndex: 2
           }}>
             -{discountPercent}%
@@ -132,10 +132,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             width: '36px',
             height: '36px',
             borderRadius: '50%',
-            background: isWishlisted ? '#FFD700' : 'rgba(11, 12, 16, 0.75)',
+            background: isWishlisted ? 'var(--gold-radiant)' : 'rgba(7, 8, 10, 0.75)',
             backdropFilter: 'blur(8px)',
-            border: '1px solid #D4AF37',
-            color: isWishlisted ? '#0b0c10' : '#FFD700',
+            border: '1px solid var(--gold-primary)',
+            color: isWishlisted ? '#07080a' : 'var(--gold-radiant)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
@@ -144,10 +144,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             transition: 'all 0.2s ease'
           }}
         >
-          <Heart size={18} fill={isWishlisted ? '#0b0c10' : 'none'} />
+          <Heart size={18} fill={isWishlisted ? '#07080a' : 'none'} />
         </button>
 
-        {/* Quick View Hover Button Overlay */}
+        {/* Quick View Hover Button */}
         <div style={{
           position: 'absolute',
           bottom: '12px',
@@ -165,14 +165,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             }}
             style={{
               width: '100%',
-              background: 'rgba(11, 12, 16, 0.85)',
+              background: 'rgba(7, 8, 10, 0.88)',
               backdropFilter: 'blur(8px)',
-              border: '1px solid #D4AF37',
+              border: '1px solid var(--gold-primary)',
               color: '#FFD700',
               padding: '8px 12px',
               borderRadius: '20px',
               fontSize: '11px',
-              fontWeight: 700,
+              fontWeight: 800,
               cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
@@ -189,14 +189,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({
       {/* Product Content Details */}
       <div style={{ padding: '16px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
         <div>
-          <div style={{ color: '#8E887D', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 600 }}>
+          <div style={{ color: 'var(--text-muted)', fontSize: '11px', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '4px', fontWeight: 700 }}>
             {product.category}
           </div>
 
           <h3 style={{
-            color: '#FBF8F3',
+            color: 'var(--text-primary)',
             fontSize: '15px',
-            fontWeight: 700,
+            fontWeight: 800,
             lineHeight: 1.3,
             marginBottom: '8px',
             display: '-webkit-box',
@@ -209,18 +209,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           {/* Rating */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', color: '#FFD700' }}>
-              <Star size={14} fill="#FFD700" />
+            <div style={{ display: 'flex', alignItems: 'center', color: 'var(--gold-radiant)' }}>
+              <Star size={14} fill="var(--gold-radiant)" />
             </div>
-            <span style={{ color: '#FBF8F3', fontSize: '12px', fontWeight: 700 }}>{product.rating}</span>
-            <span style={{ color: '#8E887D', fontSize: '12px' }}>({product.reviewsCount})</span>
+            <span style={{ color: 'var(--text-primary)', fontSize: '12px', fontWeight: 800 }}>{product.rating}</span>
+            <span style={{ color: 'var(--text-muted)', fontSize: '12px' }}>({product.reviewsCount})</span>
           </div>
 
           {/* Price Display */}
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', marginBottom: '14px' }}>
-            <span style={{ color: '#FFD700', fontSize: '18px', fontWeight: 800 }}>{displayPrice}</span>
+            <span style={{ color: 'var(--gold-radiant)', fontSize: '18px', fontWeight: 900 }}>{displayPrice}</span>
             {product.originalPrice > product.price && (
-              <span style={{ color: '#8E887D', fontSize: '13px', textDecoration: 'line-through' }}>
+              <span style={{ color: 'var(--text-muted)', fontSize: '13px', textDecoration: 'line-through' }}>
                 {displayOriginal}
               </span>
             )}
@@ -236,11 +236,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({
                   setSelectedSize(size);
                 }}
                 style={{
-                  background: selectedSize === size ? '#D4AF37' : '#141418',
-                  color: selectedSize === size ? '#0b0c10' : '#C2BBB0',
-                  border: selectedSize === size ? '1px solid #FFD700' : '1px solid rgba(212, 175, 55, 0.2)',
+                  background: selectedSize === size ? 'var(--gold-radiant)' : 'var(--bg-secondary)',
+                  color: selectedSize === size ? '#07080a' : 'var(--text-secondary)',
+                  border: selectedSize === size ? '1px solid var(--gold-radiant)' : '1px solid var(--border-color)',
                   fontSize: '10px',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   width: '26px',
                   height: '26px',
                   borderRadius: '4px',
@@ -262,7 +262,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             width: '100%',
             padding: '10px',
             fontSize: '12px',
-            background: addedAnimation ? '#2A9D8F' : undefined
+            background: addedAnimation ? 'var(--accent-green)' : undefined
           }}
         >
           {addedAnimation ? (
